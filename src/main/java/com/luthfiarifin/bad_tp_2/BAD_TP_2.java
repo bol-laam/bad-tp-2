@@ -201,7 +201,7 @@ public class BAD_TP_2 {
             tableModel.addRow(rowData);
             clearFields();
         } else {
-            showErrorDialog(frame, "NIK already exists!");
+            showErrorDialog("NIK already exists!");
         }
     }
 
@@ -221,10 +221,10 @@ public class BAD_TP_2 {
                 tableModel.setValueAt(birthdate, selectedRow, 4);
                 clearFields();
             } else {
-                showErrorDialog(frame, "NIK already exists!");
+                showErrorDialog("NIK already exists!");
             }
         } else {
-            showErrorDialog(frame, "Please select a row");
+            showErrorDialog("Please select a row");
         }
     }
 
@@ -235,7 +235,7 @@ public class BAD_TP_2 {
             tableModel.removeRow(selectedRow);
             clearFields();
         } else {
-            showErrorDialog(frame, "Please select a row");
+            showErrorDialog("Please select a row");
         }
     }
 
@@ -282,7 +282,7 @@ public class BAD_TP_2 {
             table.setRowSelectionInterval(selectedRow - 1, selectedRow - 1);
             setFields(selectedRow - 1);
         } else {
-            showErrorDialog(frame, "No previous data!");
+            showErrorDialog("No previous data!");
         }
     }
 
@@ -293,15 +293,15 @@ public class BAD_TP_2 {
             table.setRowSelectionInterval(selectedRow + 1, selectedRow + 1);
             setFields(selectedRow + 1);
         } else {
-            showErrorDialog(frame, "No next data!");
+            showErrorDialog("No next data!");
         }
     }
 
-    private void showMessageDialog(Component parentComponent, String message, String title, int messageType) {
-        JOptionPane.showMessageDialog(parentComponent, message, title, messageType);
+    private void showMessageDialog(String message, String title, int messageType) {
+        JOptionPane.showMessageDialog(frame, message, title, messageType);
     }
 
-    private void showErrorDialog(Component parentComponent, String message) {
-        showMessageDialog(parentComponent, message, "Error", JOptionPane.ERROR_MESSAGE);
+    private void showErrorDialog(String message) {
+        showMessageDialog(message, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }
