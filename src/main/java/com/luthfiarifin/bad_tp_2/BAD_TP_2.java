@@ -12,11 +12,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -79,79 +81,66 @@ public class BAD_TP_2 {
         JScrollPane scrollPane = new JScrollPane(table);
 
         // Set layout
-        frame.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(5, 5, 5, 5);
+        frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        c.gridx = 0;
-        c.gridy = 0;
-        frame.add(lblName, c);
+        JPanel txtPanel = new JPanel();
+        txtPanel.setLayout(new GridBagLayout());
 
-        c.gridx = 1;
-        c.gridy = 0;
-        frame.add(txtName, c);
+        GridBagConstraints constraints = new GridBagConstraints();
+        constraints.insets = new Insets(5, 5, 5, 5);
+        constraints.anchor = GridBagConstraints.WEST;
 
-        c.gridx = 0;
-        c.gridy = 1;
-        frame.add(lblAddress, c);
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        txtPanel.add(lblName, constraints);
 
-        c.gridx = 1;
-        c.gridy = 1;
-        frame.add(txtAddress, c);
+        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        txtPanel.add(txtName, constraints);
 
-        c.gridx = 0;
-        c.gridy = 2;
-        frame.add(lblNIK, c);
+        constraints.gridx = 0;
+        constraints.gridy = 1;
+        constraints.gridwidth = 1;
+        txtPanel.add(lblAddress, constraints);
 
-        c.gridx = 1;
-        c.gridy = 2;
-        frame.add(txtNIK, c);
+        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        txtPanel.add(txtAddress, constraints);
 
-        c.gridx = 0;
-        c.gridy = 3;
-        frame.add(lblBirthdate, c);
+        constraints.gridx = 0;
+        constraints.gridy = 2;
+        constraints.gridwidth = 1;
+        txtPanel.add(lblNIK, constraints);
 
-        c.gridx = 1;
-        c.gridy = 3;
-        frame.add(txtBirthdate, c);
+        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        txtPanel.add(txtNIK, constraints);
 
-        c.gridx = 2;
-        c.gridy = 0;
-        frame.add(btnAdd, c);
+        constraints.gridx = 0;
+        constraints.gridy = 3;
+        constraints.gridwidth = 1;
+        txtPanel.add(lblBirthdate, constraints);
 
-        c.gridx = 2;
-        c.gridy = 1;
-        frame.add(btnUpdate, c);
+        constraints.gridx = 1;
+        constraints.gridwidth = 2;
+        txtPanel.add(txtBirthdate, constraints);
 
-        c.gridx = 2;
-        c.gridy = 2;
-        frame.add(btnDelete, c);
+        frame.add(txtPanel);
 
-        c.gridx = 2;
-        c.gridy = 3;
-        frame.add(btnPrev, c);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
+        buttonPanel.add(btnAdd);
+        buttonPanel.add(btnUpdate);
+        buttonPanel.add(btnDelete);
+        buttonPanel.add(btnPrev);
+        buttonPanel.add(btnNext);
+        buttonPanel.add(btnList);
+        buttonPanel.add(btnExit);
 
-        c.gridx = 3;
-        c.gridy = 3;
-        frame.add(btnNext, c);
+        frame.add(buttonPanel);
 
-        c.gridx = 2;
-        c.gridy = 4;
-        frame.add(btnList, c);
+        frame.add(scrollPane);
 
-        c.gridx = 3;
-        c.gridy = 4;
-        frame.add(btnExit, c);
-
-        c.gridx = 0;
-        c.gridy = 5;
-        c.gridwidth = 4;
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        frame.add(scrollPane, c);
-
-        // Add button listeners
         btnAdd.addActionListener((ActionEvent e) -> {
             addData();
         });
