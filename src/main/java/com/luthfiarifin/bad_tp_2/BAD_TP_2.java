@@ -3,7 +3,6 @@
  */
 package com.luthfiarifin.bad_tp_2;
 
-import java.awt.Component;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
